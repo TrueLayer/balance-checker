@@ -4,7 +4,7 @@ Example app showing how to use TrueLayer Data API v1 to retrieve the balance of 
 
 ## Requirements
 
-- Python 3.6 =<
+- Python 3.7
 - pipenv
 
 ## Installing the dependencies

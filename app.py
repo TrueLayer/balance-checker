@@ -14,7 +14,7 @@ CLIENT_DATA = {}
 
 def retrieve_balance(account_id, access_token) -> str:
     auth_header = {'Authorization': f'Bearer {access_token}'}
-    res = requests.get(f'https://api.truelayer.com/data/v1/accounts/{account_id}/balance', headers=auth_header)
+    res = requests.get(f'https://api.truelayer-sandbox.com/data/v1/accounts/{account_id}/balance', headers=auth_header)
 
     # blow up if cannot retrive balance for an account
     res.raise_for_status()
@@ -43,7 +43,7 @@ def show_balance():
 
     auth_header = {'Authorization': f'Bearer {access_token}'}
 
-    res = requests.get('https://api.truelayer.com/data/v1/accounts', headers=auth_header)
+    res = requests.get('https://api.truelayer-sandbox.com/data/v1/accounts', headers=auth_header)
 
     # blow up if cannot retrive accounts
     res.raise_for_status()
@@ -74,7 +74,7 @@ def sign_in():
         'enable_mock': 'true',
     })
 
-    auth_uri = f'https://auth.truelayer.com/?{query}'
+    auth_uri = f'https://auth.truelayer-sandbox.com/?{query}'
 
     return f'Please sign in <a href="{auth_uri}" target="_blank">here.</a>'
 
@@ -92,7 +92,7 @@ def handle_signin():
         'grant_type': 'authorization_code',
         'redirect_uri': REDIRECT_URI,
     }
-    res = requests.post('https://auth.truelayer.com/connect/token', data=body)
+    res = requests.post('https://auth.truelayer-sandbox.com/connect/token', data=body)
 
     CLIENT_DATA['token'] = res.json()
 
